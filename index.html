@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>गुढीपाडवा आणि हिंदू नववर्ष शुभेच्छा</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(120deg, #ff9800, #ffeb3b);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            padding: 5vw;
+            width: 90%;
+            max-width: 500px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+        .input-container {
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #d35400;
+            border-radius: 5px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #d35400;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #a04000;
+        }
+        .message {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d35400;
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid #d35400;
+            display: inline-block;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+            word-wrap: break-word;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .floating-elements span {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: gold;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: floatAnimation 5s linear infinite;
+        }
+        @keyframes floatAnimation {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-100px); opacity: 0.5; }
+            100% { transform: translateY(-200px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements"></div>
+    <div class="container">
+        <h1>गुढीपाडवा आणि हिंदू नववर्षाच्या हार्दिक शुभेच्छा!</h1>
+        <div class="input-container">
+            <input type="text" id="username" placeholder="तुमचे नाव लिहा">
+        </div>
+        <button onclick="showBlessing()">शुभेच्छा घ्या</button>
+        <div class="message" id="blessing">तुमचे नाव लिहा आणि बटण दाबा शुभेच्छा मिळवण्यासाठी!</div>
+    </div>
+    <script>
+        function showBlessing() {
+            const name = document.getElementById("username").value.trim();
+            if (!name) {
+                alert("कृपया तुमचे नाव लिहा आणि शुभेच्छा घ्या!");
+                return;
+            }
+            const blessings = [
+                `प्रिय ${name}, नवीन वर्ष तुमच्यासाठी आनंद आणि यश घेऊन येवो!`,
+                `${name}, तुम्हाला उत्तम आरोग्य, संपत्ती आणि सुख लाभो!`,
+                `गुढीपाडवा तुम्हाला आणि तुमच्या परिवाराला समृद्धी आणि शुभता देओ!`,
+                `गुढीपाडव्याच्या हार्दिक शुभेच्छा, ${name}! तुमच्या सर्व स्वप्नांची पूर्तता होवो!`,
+                `नवीन वर्ष नवीन संधी आणि अपार आनंद घेऊन येवो, ${name}!`
+            ];
+            const randomBlessing = blessings[Math.floor(Math.random() * blessings.length)];
+            document.getElementById("blessing").innerText = `${randomBlessing}\n- सागर मोतेकर`;
+        }
+
+        function createFloatingElements() {
+            const container = document.querySelector('.floating-elements');
+            for (let i = 0; i < 20; i++) {
+                const span = document.createElement('span');
+                span.style.left = `${Math.random() * 100}%`;
+                span.style.top = `${Math.random() * 100}%`;
+                span.style.animationDuration = `${3 + Math.random() * 3}s`;
+                span.style.animationDelay = `${Math.random()}s`;
+                container.appendChild(span);
+            }
+        }
+
+        createFloatingElements();
+    </script>
+</body>
+</html>
